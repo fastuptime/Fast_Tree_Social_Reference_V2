@@ -11,15 +11,12 @@
 
 # Resimler
 
-![image](https://user-images.githubusercontent.com/63351166/210420990-3848168d-3aa6-4a88-aa36-3fd417572805.png)
-![image](https://user-images.githubusercontent.com/63351166/210421173-0a564cfe-2c82-4f09-be3b-b71fdebc0156.png)
-![image](https://user-images.githubusercontent.com/63351166/210421185-944fc6e8-ee43-4143-ac94-c0d796066978.png)
-![image](https://user-images.githubusercontent.com/63351166/210421333-072ad9b3-005a-4c05-9440-7bbfe2001558.png)
-![image](https://user-images.githubusercontent.com/63351166/210421373-09eaf690-1e14-462f-8f27-98ac7c355930.png)
-![image](https://user-images.githubusercontent.com/63351166/210421413-f5de76c7-7ef3-47bb-ba10-e8d2ca367c03.png)
-![image](https://user-images.githubusercontent.com/63351166/210421446-92f13d00-c514-4346-8ed3-3b3d93570400.png)
-![image](https://user-images.githubusercontent.com/63351166/210421552-e3ebe2d2-69e3-4d91-ba9e-cacbce099597.png)
-![image](https://user-images.githubusercontent.com/63351166/210421572-8898fbde-e5df-4aaa-8964-06620ca12c89.png)
+![image](https://github.com/fastuptime/Fast_Tree_Social_Reference_V2/assets/63351166/94be60d5-eb7e-4acf-99bc-e43e05a38e25)
+![image](https://github.com/fastuptime/Fast_Tree_Social_Reference_V2/assets/63351166/d27cb2f7-fb84-4938-a902-69d3c0e21af1)
+![image](https://github.com/fastuptime/Fast_Tree_Social_Reference_V2/assets/63351166/6e7ae60a-68c6-451b-97ad-b5dff55a3606)
+![image](https://github.com/fastuptime/Fast_Tree_Social_Reference_V2/assets/63351166/1ce3c2ab-fbeb-4934-bcb8-749d9198ef30)
+![image](https://github.com/fastuptime/Fast_Tree_Social_Reference_V2/assets/63351166/1e0dafe0-50c6-4071-b4e0-52254ae896a9)
+
 
 
 ---
