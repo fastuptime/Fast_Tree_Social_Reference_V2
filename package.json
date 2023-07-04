@@ -1,0 +1,34 @@
+{
+  "name": "social-reference",
+  "version": "1.0.0",
+  "description": "Social Reference is a social media platform that allows users to share their thoughts and opinions with others. Users can create an account, post their thoughts, and interact with other users. Users can also follow other users to see their posts on their dashboard. Users can also edit their posts and delete them. Users can also delete their account.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "social media",
+    "social reference",
+    "social reference social media",
+    "social reference social media platform",
+    "social reference social media platform that allows users to share their thoughts and opinions with others",
+    "FastUptime",
+    "Can",
+    "Can FastUptime",
+    "Can FastUptime Social Reference",
+    "Can FastUptime Social Reference Social Media"
+  ],
+  "author": "Can & FastUptime",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "moment": "^2.29.4",
+    "mongoose": "^6.8.2",
+    "sha256": "^0.2.0"
+  }
+}

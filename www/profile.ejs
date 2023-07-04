@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fast Tree & Social Reference V2 - Profile <%= user.name %> <%= user.surname %></title>
+    <link rel="stylesheet" href="https://tailwindui.com/v2-assets/components.css?hash=fe7b0d8e5fd7f78e21e2652a5de212c0">
+    <script src="https://tailwindui.com/v2-assets/components.js?hash=c42e44f6c92eb7517e1a4e8bd13028a6"></script>
+    <link rel="modulepreload" href="https://tailwindui.com/build/assets/iframe-alpine-964dceff.js">
+    <link rel="modulepreload" href="https://tailwindui.com/build/assets/iframe-a81dc9a8.js">
+    <link rel="modulepreload" href="https://tailwindui.com/build/assets/_commonjsHelpers-87174ba5.js">
+    <script type="module" src="https://tailwindui.com/build/assets/iframe-alpine-964dceff.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="bg-white"  style="overflow-y: auto;">
+    <div class="mx-auto max-w-7xl py-12 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-4xl">
+    
+            <div>
+                <div class="px-4 sm:px-2" style="display: flex; justify-content: center; padding-bottom: 20px;">
+                    <img class="h-24 w-auto" src="<%= user.profile_picture %>" style="border-radius: 50%;"
+                    alt="<%= user.name %> <%= user.surname %>">
+                </div>
+                <div class="mt-6 border-t border-gray-100">
+                    <dl class="divide-y divide-gray-100">
+                        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt class="text-sm font-medium leading-6 text-gray-900">Full name</dt>
+                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= user.name %> <%= user.surname %></dd>
+                        </div>
+                        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt class="text-sm font-medium leading-6 text-gray-900">Country</dt>
+                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= user.country %></dd>
+                        </div>
+                        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt class="text-sm font-medium leading-6 text-gray-900">About</dt>
+                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= user.about %></dd>
+                        </div>
+                        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt class="text-sm font-medium leading-6 text-gray-900">Social</dt>
+
+                            <div class="px-4 py-3 text-right sm:px-6 flex" style="display: flex; justify-content: space-between;">
+
+                                <% social_media.forEach(sosyal => { %> 
+                                    <div class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0 flex" style="display: flex; justify-content: space-between; padding-right: 5px;">
+                                        <a href="<%= sosyal.link %>" class="text-indigo-600 hover:text-indigo-900" target="_blank" title="<%= sosyal.name %>">
+                                            <i class="<%= sosyal.icon %>" style="font-size: 30px;"></i>
+                                            <% if(u_profile) { %>
+                                                <i class="fas fa-times" style="font-size: 15px; margin-left: -10px; margin-top: 10px; color: red;" onclick="window.location.href='/delete-social?id=<%= sosyal._id %>'"></i>
+                                            <% } %>
+                                        </a>
+                                    </div>
+                                <% }); %>
+                            </div>
+                        </div>
+                    </dl>
+
+                    <% if(u_profile) { %>
+                        <div class="px-4 py-3 text-right sm:px-6">
+                            <a href="/edit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+                                >Edit</a>
+                            <a href="?social=true" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+                                >Add Social Media</a>
+                                
+                        </div>
+
+                        <!--
+                            Sosyal Medya Ekleme Modal
+                        -->
+                    <% } %>
+
+                </div>
+            </div>
+    
+        </div>
+    </div>
+
+    <div class="fixed bottom-0 right-0 p-2">
+        <a href="https://github.com/fastuptime/" target="_blank" class="text-xs text-gray-900">Made with ❤️ by
+            FastUptime</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(u_profile) { %>
+        <script>
+            let urlParamsx = new URLSearchParams(window.location.search);
+            let myParamx = urlParamsx.get('social');
+            if(myParamx) {
+                (async () => {
+                const { value: formValues } = await Swal.fire({
+                        title: 'Sosyal Medya Ekle',
+                        html:
+                            `
+                            <label for="platform" class="block text-sm font-medium text-gray-700">Platform</label>
+                            <select id="platform" name="platform" autocomplete="platform" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <option value="fa-brands fa-instagram"> Instagram </option>
+                                <option value="fa-brands fa-facebook"> Facebook </option>
+                                <option value="fa-brands fa-twitter"> Twitter </option>
+                                <option value="fa-brands fa-youtube"> Youtube </option>
+                                <option value="fa-brands fa-tiktok"> Tiktok </option>
+                                <option value="fa-brands fa-linkedin"> Linkedin </option>
+                                <option value="fa-brands fa-github"> Github </option>
+                                <option value="fa-brands fa-pinterest"> Pinterest </option>
+                                <option value="fa-brands fa-snapchat"> Snapchat </option>
+                                <option value="fa-brands fa-twitch"> Twitch </option>
+                                <option value="fa-brands fa-whatsapp"> Whatsapp </option>
+                                <option value="fa-brands fa-telegram"> Telegram </option>
+                                <option value="fa-brands fa-discord"> Discord </option>
+                                <option value="fa-brands fa-reddit"> Reddit </option>
+                                <option value="fa-sharp fa-light fa-network-wired"> Diğer </option>
+                            </select><br>
+                            <label for="link" class="block text-sm font-medium text-gray-700">Link</label>
+                            <input type="url" id="link" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <br><label for="username" class="block text-sm font-medium text-gray-700">Kullanıcı Adı</label>
+                            <input type="text" id="username" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            `,
+                        focusConfirm: false,
+                        cancelButtonText: 'İptal',
+                        confirmButtonText: 'Ekle',
+                        showCancelButton: true,
+                        preConfirm: () => {
+                            return [
+                                document.getElementById('platform').value,
+                                document.getElementById('link').value,
+                                document.getElementById('username').value
+                            ]
+                        }
+                    })
+                    
+                    if (formValues) {
+                        let platform = formValues[0];
+                        let link = formValues[1];
+                        let username = formValues[2];
+                        window.location.href = `/add-social?platform=${platform}&link=${link}&username=${username}`;
+                    }
+                })()
+            }
+        </script>
+    <% } %>
+    <script>
+        let urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('error') == 'true') {
+            let msg = urlParams.get('message');
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: `${msg}`,
+                footer: 'Tüm Hakları Saklıdır.'
+            })
+        }
+        if (urlParams.get('success') == 'true') {
+            let msg = urlParams.get('message');
+            Swal.fire({
+                icon: 'success',
+                title: 'Başarılı',
+                text: `${msg}`,
+                footer: 'Tüm Hakları Saklıdır.'
+            })
+        }
+
+    </script>
+</body>
+
+</html>
